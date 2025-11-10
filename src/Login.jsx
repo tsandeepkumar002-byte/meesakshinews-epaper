@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import something from "./api";
+import { loginUser } from "./api";
 
 export default function Login(){
   const [email, setEmail] = useState('admin@meesakshinews.com')
