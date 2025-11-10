@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import something from "./api";
+import { getEditions } from "./api";
 
 export default function Home(){
   const [status, setStatus] = useState('Checking...')
