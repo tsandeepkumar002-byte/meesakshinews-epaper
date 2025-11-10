@@ -1,4 +1,4 @@
-import axios from 'axios'
+import something from "./api";
 
 export const API_BASE = 'https://epaper-meesakshinews-g19d.onrender.com'
 
