@@ -1,15 +1,13 @@
 // src/api.js
-
 import axios from "axios";
 
 export const BASE_URL = "https://epaper-meesakshinews-g19d.onrender.com";
 
-// Create a reusable axios instance
 export const api = axios.create({
   baseURL: BASE_URL,
 });
 
-// Example API functions
+// Example function for login
 export async function loginUser(email, password) {
   try {
     const res = await api.post("/login", { email, password });
@@ -20,6 +18,7 @@ export async function loginUser(email, password) {
   }
 }
 
+// Example function to get editions (for dashboard or home)
 export async function getEditions() {
   try {
     const res = await api.get("/editions");
