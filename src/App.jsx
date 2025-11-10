@@ -1,41 +1,32 @@
 import React from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
-import Home from "./Home";
-import Login from "./Login";
-import Dashboard from "./Dashboard";
+import Home from './Epaper'
+import Login from './Login'
+import Dashboard from './Dashboard'
 
-export default function App(){
+export default function App() {
   return (
     <div>
-      <header className="header">
-        <div className="container header-inner">
-          <div className="brand-block">
-            <div className="logo-placeholder">M</div>
-            <div>
-              <h1 className="brand">MEE SAKSHI</h1>
-              <div className="tagline">E-PAPER CMS</div>
-            </div>
-          </div>
-          <nav className="nav-links">
+      <header className="site-header">
+        <div className="container">
+          <h1>MEE SAKSHI E-PAPER CMS</h1>
+          <nav>
             <Link to="/">Home</Link>
             <Link to="/login">Login</Link>
+            <Link to="/dashboard">Dashboard</Link>
           </nav>
         </div>
       </header>
 
-      <div className="top-banner">
-        <div className="container banner-inner">Today's Headlines — MEE SAKSHI</div>
-      </div>
-
-      <main className="container main-content">
+      <main className="container">
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
 
-      <footer className="footer">
+      <footer className="site-footer">
         <div className="container">© MEE SAKSHI</div>
       </footer>
     </div>

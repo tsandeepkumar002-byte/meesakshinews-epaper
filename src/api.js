@@ -1,30 +1,27 @@
-// src/api.js
-import axios from "axios";
+export const BACKEND_URL = 'https://epaper-meesakshinews-g19d.onrender.com'
 
-export const BASE_URL = "https://epaper-meesakshinews-g19d.onrender.com";
-
-export const api = axios.create({
-  baseURL: BASE_URL,
-});
-
-// Example function for login
-export async function loginUser(email, password) {
-  try {
-    const res = await api.post("/login", { email, password });
-    return res.data;
-  } catch (err) {
-    console.error("Login error:", err);
-    throw err;
-  }
+export async function fetchEditions() {
+  const res = await fetch(`${BACKEND_URL}/editions`)
+  if (!res.ok) throw new Error('Failed to fetch editions')
+  return res.json()
 }
 
-// Example function to get editions (for dashboard or home)
-export async function getEditions() {
-  try {
-    const res = await api.get("/editions");
-    return res.data;
-  } catch (err) {
-    console.error("Get editions error:", err);
-    throw err;
-  }
+export async function uploadEdition(formData, token) {
+  const res = await fetch(`${BACKEND_URL}/editions`, {
+    method: 'POST',
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+    body: formData
+  })
+  if (!res.ok) throw new Error('Upload failed')
+  return res.json()
+}
+
+export async function loginApi(email, password) {
+  const res = await fetch(`${BACKEND_URL}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  })
+  if (!res.ok) throw new Error('Login failed')
+  return res.json()
 }
